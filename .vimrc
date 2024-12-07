@@ -12,7 +12,7 @@ set autoindent
 set smartindent
 set tabstop=4
 set shiftwidth=4
-set expandtab
+set noexpandtab
 
 " Recherche
 set hlsearch
@@ -74,26 +74,21 @@ set pastetoggle=<F2>
 
 set virtualedit=onemore
 
-set whichwrap-=h
-set whichwrap-=l
+" auto close pairs
+call plug#begin('~/.vim/plugged')
+Plug 'jiangmiao/auto-pairs'
+Plug 'preservim/nerdtree'
+Plug 'lambdalisue/fern.vim'
+Plug 'preservim/nerdtree'
+call plug#end()
+let g:fern_disable_startup_warnings = 1
+filetype plugin on
 
-" Add this to your ~/.vim_runtime/my_configs.vim
+let g:NERDTreeShowIcons = 0
 
-" Enable smooth scrolling
-set smoothscroll
-
-" Configure scroll-off margin
-set scrolloff=8
-
-" Configure cursor movement speed
-set ttyfast
-set lazyredraw
-
-" Set updatetime for smoother updates (lower value = smoother, but more CPU usage)
-set updatetime=100
-
-" If you're using Neovim, you can also add:
-if has('nvim')
-    " Enable cursor animation
-    set mousescroll=ver:1,hor:1
-endif
+" Open NERDTree automatically when Vim starts without a file
+"autocmd vimenter * NERDTree | wincmd p
+" Toggle NERDTree with Ctrl+n
+nnoremap <C-n> :NERDTreeToggle<CR>
+" Specific settings for YAML files
+autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 noexpandtab
