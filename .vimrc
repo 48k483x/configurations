@@ -80,6 +80,10 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'preservim/nerdtree'
 Plug 'lambdalisue/fern.vim'
 Plug 'preservim/nerdtree'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-colorscheme-switcher'
+Plug 'flazz/vim-colorschemes'
+Plug 'xolox/vim-colorscheme-switcher'
 call plug#end()
 let g:fern_disable_startup_warnings = 1
 filetype plugin on
@@ -92,3 +96,34 @@ let g:NERDTreeShowIcons = 0
 nnoremap <C-n> :NERDTreeToggle<CR>
 " Specific settings for YAML files
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 noexpandtab
+
+" Transparency for any colorscheme
+augroup transparent_background
+    autocmd!
+    autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+    autocmd ColorScheme * highlight NonText ctermbg=NONE guibg=NONE
+    autocmd ColorScheme * highlight LineNr ctermbg=NONE guibg=NONE
+    autocmd ColorScheme * highlight Folded ctermbg=NONE guibg=NONE
+    autocmd ColorScheme * highlight SignColumn ctermbg=NONE guibg=NONE
+    autocmd ColorScheme * highlight EndOfBuffer ctermbg=NONE guibg=NONE
+augroup END
+
+" Key mappings for switching colorschemes
+map <F8> :NextColorScheme<CR>
+map <S-F8> :PrevColorScheme<CR>
+
+" Optional: if you want random colorscheme
+map <F7> :RandomColorScheme<CR>
+
+" Hada houwa: my favorite theme
+colorscheme nord
+
+
+" Enable bold font
+let g:enable_bold_font = 1
+
+" Enable powerline/nerd fonts
+set encoding=UTF-8
+
+let g:airline_powerline_fonts = 1
+set guifont=Hack\ Nerd\ Font:h12
