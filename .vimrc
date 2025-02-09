@@ -84,6 +84,17 @@ Plug 'xolox/vim-misc'
 Plug 'xolox/vim-colorscheme-switcher'
 Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-colorscheme-switcher'
+" all that shit new 
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/fern-git-status.vim'
+Plug 'RRethy/vim-illuminate'
+Plug 'honza/vim-snippets'  " (Optional: Predefined snippets)
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+
+"
 call plug#end()
 let g:fern_disable_startup_warnings = 1
 filetype plugin on
@@ -93,6 +104,8 @@ let g:NERDTreeShowIcons = 0
 " Open NERDTree automatically when Vim starts without a file
 "autocmd vimenter * NERDTree | wincmd p
 " Toggle NERDTree with Ctrl+n
+"nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <leader>f :Fern . -reveal=%<CR>
 nnoremap <C-n> :NERDTreeToggle<CR>
 " Specific settings for YAML files
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 noexpandtab
@@ -116,7 +129,7 @@ map <S-F8> :PrevColorScheme<CR>
 map <F7> :RandomColorScheme<CR>
 
 " Hada houwa: my favorite theme
-colorscheme nord
+colorscheme 256-grayvim
 
 
 " Enable bold font
@@ -127,3 +140,14 @@ set encoding=UTF-8
 
 let g:airline_powerline_fonts = 1
 set guifont=Hack\ Nerd\ Font:h12
+
+
+let g:Illuminate_delay = 1  " Faster highlighting
+autocmd VimEnter * highlight IlluminatedWordText gui=NONE cterm=NONE
+autocmd VimEnter * highlight IlluminatedWordRead gui=NONE cterm=NONE
+autocmd VimEnter * highlight IlluminatedWordWrite gui=NONE cterm=NONE
+
+let g:neosnippet#enable_auto_select = 1
+let g:neosnippet#expand_word_boundary = 1
+imap <expr> <Tab> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<Tab>"
+

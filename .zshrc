@@ -22,3 +22,5 @@ zstyle ':vcs_info:git:*' formats '%F{white}[%F{blue}%b%F{white}]%f'
 PS1='%F{255}⎇ %F{blue}%1~ %F{white}❯%f ${vcs_info_msg_0_} '
 
 export PATH="$HOME/.cargo/bin:$PATH"
+
+echo -ne "\e[4 q"
